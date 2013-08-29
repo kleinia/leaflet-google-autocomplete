@@ -1,8 +1,9 @@
 /*
- * L.Control.GeoSearch - search for an address and zoom to it's location
- * https://github.com/smeijer/leaflet.control.geosearch
+ * L.Control.GoogleAutocomplete - search for an address and zoom to it's location
+ * https://github.com/rmunglez/leaflet-google-autocomplete
  */
 
+(function($, undefined) {
 L.GoogleAutocomplete = {};
 
 // MSIE needs cors support
@@ -16,7 +17,7 @@ L.GoogleAutocomplete.Result = function (x, y, label) {
 
 L.Control.GoogleAutocomplete = L.Control.extend({
     options: {
-        position: 'topcenter'
+        position: 'topright'
     },
 
     initialize: function (options) {
@@ -26,7 +27,7 @@ L.Control.GoogleAutocomplete = L.Control.extend({
         }
         var optionsTmp = {
             'searchLabel': options.searchLabel || 'search for address...',
-            'closeToMeLabel': options.searchLabel || 'Close to me',
+            'closeToMeLabel': options.closeToMeLabel || 'Close to me',
             'notFoundMessage' : options.notFoundMessage || 'Sorry, that address could not be found.',
             'zoomLevel': options.zoomLevel || 13
         }
@@ -41,8 +42,8 @@ L.Control.GoogleAutocomplete = L.Control.extend({
         var $controlContainer = $(map._controlContainer);
 
         if ($controlContainer.children('.leaflet-top.leaflet-center').length == 0) {
-            $controlContainer.append('<div class="leaflet-top leaflet-center"></div>');
-            map._controlCorners.topcenter = $controlContainer.children('.leaflet-top.leaflet-center').first()[0];
+            $controlContainer.append('<div class="leaflet-top leaflet-right"></div>');
+            map._controlCorners.topcenter = $controlContainer.children('.leaflet-top.leaflet-right').first()[0];
         }
 
         this._map = map;
@@ -103,3 +104,4 @@ L.Control.GoogleAutocomplete = L.Control.extend({
         }
     },
 });
+})(jQuery);
