@@ -66,6 +66,9 @@ L.Control.GoogleAutocomplete = L.Control.extend({
         $(searchwrapper).append(this._searchbox);
         $(this._container).append(searchwrapper, this._closetomebox);
         $(this._closetomebox).html("<span>"+this.options.closeToMeLabel+"</span>");
+
+        L.DomEvent.addListener(this._container, 'click', L.DomEvent.stop);
+        L.DomEvent.disableClickPropagation(this._container);
         
         L.DomEvent.addListener(this._closetomebox, 'click', this._closeToMe, this);
         L.DomEvent.disableClickPropagation(this._closetomebox);
