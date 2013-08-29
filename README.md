@@ -3,7 +3,7 @@ Adds support for address lookup (a.k.a. geocoding / geoseaching) to Leaflet with
 
 #Using the control
 
-Create the map and adss the control:
+Create the map and add the control:
 
 ````
 var map = L.map('map').setView([51.505, -0.09], 13);
